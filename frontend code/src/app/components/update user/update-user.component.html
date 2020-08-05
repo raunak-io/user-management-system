@@ -1,0 +1,56 @@
+<mat-card>
+  <span>UPDATE USER</span>
+
+  <form [formGroup]="userUpdation" (ngSubmit)="updateUserData()">
+    <div>
+      <button mat-stroked-button type="button" (click)="filepicker.click()">
+        UPDATE IMAGE
+      </button>
+      <input type="file" #filepicker (change)="pickImage($event)" />
+    </div>
+    <div
+      class="image-preview"
+      *ngIf="
+        imagePreview !== '' && imagePreview && userUpdation.get('image').valid
+      "
+    >
+      <img [src]="imagePreview" />
+    </div>
+    <div class="image-display">
+      <img [src]="user.image" />
+    </div>
+
+    <mat-form-field>
+      <input
+        matInput
+        formControlName="firstname"
+        placeholder="firstname"
+        required
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        formControlName="lastname"
+        placeholder="lastname"
+        required
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        formControlName="email"
+        placeholder="email@example.com"
+        required
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput formControlName="role" placeholder="role" required />
+      <br />
+      <mat-hint> roles can only be (admin|user|manager)</mat-hint>
+    </mat-form-field>
+
+    <button mat-raised-button color="accent" *ngIf="!isLoading">UPDATE</button>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+  </form>
+</mat-card>

@@ -1,0 +1,35 @@
+input[type="file"] {
+  visibility: hidden;
+}
+mat-form-field {
+  width: 100%;
+}
+mat-card {
+  width: 60%;
+  margin: 10% auto;
+}
+.image-preview , .image-display{
+  height: 5rem;
+  border-radius: 50%;
+  margin: 1rem 0;
+}
+.image-preview img ,.image-display img {
+  height: 100%;
+}
+span {
+  text-align: center;
+}
+button {
+  width: 100%;
+}
+
+mat-card .head {
+  font-size: large;
+
+  text-align: center;
+  margin: 8px 0;
+  text-transform: uppercase;
+}
+mat-spinner {
+  margin: 0 40%;
+}

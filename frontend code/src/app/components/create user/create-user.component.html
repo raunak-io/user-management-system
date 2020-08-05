@@ -1,0 +1,111 @@
+<mat-card>
+  <span>CREATE USER</span>
+
+  <form [formGroup]=" createUserForm" (ngSubmit)="createData()">
+    <div>
+      <button mat-stroked-button type="button" (click)="filepicker.click()">
+        IMAGE
+      </button>
+      <input type="file" #filepicker (change)="pickImage($event)" />
+    </div>
+    <div
+      class="image-preview"
+      *ngIf="
+        imagePreview !== '' && imagePreview &&  createUserForm.get('image').valid
+      "
+    >
+      <img [src]="imagePreview" />
+    </div>
+
+    <mat-form-field
+      >
+      <input
+        matInput
+        formControlName="firstname"
+        placeholder="firstname"
+        required
+      />
+      <mat-error *ngIf="firstname.touched && firstname.invalid"
+        >Please enter your name</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field
+      >
+      <input
+        matInput
+        formControlName="lastname"
+        placeholder="lastname"
+        required
+      />
+      <mat-error *ngIf="lastname.touched && lastname.invalid"
+        >Please enter your name</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field
+      >
+      <input
+        matInput
+        formControlName="email"
+        placeholder="email@example.com"
+        required
+      />
+      <mat-error *ngIf="email.touched && email.invalid"
+        >Please enter your email address</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field
+      >
+      <input
+        matInput
+        formControlName="role"
+        placeholder="role"
+        required
+      /> <br />
+      <mat-hint> roles can only be (admin|user|manager)</mat-hint>
+      <mat-error *ngIf="role.touched && role.invalid"
+        >Please enter correct role</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+
+      <input
+        [type]="hide ? 'password' : 'text'"
+        matInput
+        formControlName="password"
+        placeholder="********"
+        required
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+      <mat-error *ngIf="password.touched && password.invalid"
+        >Please enter a password</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>confirm Password</mat-label>
+
+      <input
+        [type]="hide ? 'password' : 'text'"
+        matInput
+        formControlName="confirmPassword"
+        placeholder="confirm password"
+        required
+      />
+      
+
+      <mat-error *ngIf="confirmPassword.touched && confirmPassword.invalid"
+        >Please confirm your password</mat-error
+      >
+    </mat-form-field>
+    <button mat-raised-button color="accent" *ngIf="!isLoading">CREATE</button>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+  </form>
+</mat-card>

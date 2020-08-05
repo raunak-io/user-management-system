@@ -1,0 +1,34 @@
+<mat-card>
+  <img [src]="userInformation.image" />
+  <mat-card-title
+    >{{ userInformation.firstname }}
+    {{ userInformation.lastname }}</mat-card-title
+  >
+
+  <span> Email: {{ userInformation.email }}</span> <br />
+  <span>
+    Last password changed at :{{
+      userInformation.passwordChangedAt | date
+    }}</span
+  >
+  <a routerLink="/auth/user-settings"><i class="fa fa-cog"></i> </a> <br />
+  <button mat-raised-button color="warn" (click)="onClick()">
+    delete account
+  </button>
+  <button
+    mat-raised-button
+    color="primary"
+    *ngIf="userRole === managerRole"
+    [routerLink]="['/auth/admin']"
+  >
+    see manager panel
+  </button>
+  <button
+    mat-raised-button
+    color="accent"
+    *ngIf="userRole === adminRole"
+    [routerLink]="['/auth/admin']"
+  >
+    see admin panel
+  </button>
+</mat-card>

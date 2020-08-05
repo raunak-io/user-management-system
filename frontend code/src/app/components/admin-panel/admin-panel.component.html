@@ -1,0 +1,38 @@
+<mat-accordion multi="true" *ngIf="usersData.length > 0">
+  <mat-expansion-panel *ngFor="let user of usersData">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{ user.firstname }} {{ user.lastname }}
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p>{{ user.email }}</p>
+    <mat-action-row>
+      <button mat-button color="accent" [routerLink]="['/auth/user', user.id]">
+        SEE USER
+      </button>
+      <button
+        *ngIf="userRole === adminRole || userRole === managerRole"
+        mat-button
+        color="primary"
+        [routerLink]="['/auth/edit', user.id]"
+      >
+        EDIT
+      </button>
+      <button
+        *ngIf="userRole === adminRole"
+        mat-button
+        color="warn"
+        (click)="deltheuser(user.id)"
+      >
+        DELETE
+      </button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>
+<p class="info-text mat-body-1" *ngIf="usersData.length <= 0">
+  No users registered yet!
+</p>
+
+<button mat-button color="accent" [routerLink]="['/auth/create-user']">
+  CREATE NEW USER ->
+</button>

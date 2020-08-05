@@ -1,0 +1,50 @@
+<mat-card>
+  <span>Update your data</span>
+
+  <form [formGroup]="userUpdate" (ngSubmit)="updateMe()">
+    <mat-error *ngIf="userUpdate.errors"
+      >please enter the required fields</mat-error
+    >
+    <mat-form-field>
+      <input
+        matInput
+        formControlName="firstname"
+        placeholder="firstname"
+        required
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        formControlName="lastname"
+        placeholder="lastname"
+        required
+      />
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        matInput
+        formControlName="email"
+        placeholder="email@example.com"
+        required
+      />
+    </mat-form-field>
+    <div>
+      <button mat-stroked-button type="button" (click)="filepicker.click()">
+        PROFILE IMAGE
+      </button>
+      <input type="file" #filepicker (change)="pickImage($event)" />
+    </div>
+    <div
+      class="image-preview"
+      *ngIf="
+        imagePreview !== '' && imagePreview && userUpdate.get('image').valid
+      "
+    >
+      <img [src]="imagePreview" />
+    </div>
+
+    <button mat-raised-button color="accent" *ngIf="!isLoading">update</button>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+  </form>
+</mat-card>

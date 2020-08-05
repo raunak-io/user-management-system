@@ -1,0 +1,14 @@
+<mat-toolbar color="primary" class="mainbar">
+  <span id="logo"> <a routerLink="/">USER MANAGEMENT</a> </span>
+  <span class="spacer"></span>
+  <ul>
+   
+    <li *ngIf="userIsAuthenticated">
+      <button mat-button (click)="onLogOut()" routerLinkActive="mat-accent">
+        Log Out
+      </button>
+    </li>
+  </ul>
+</mat-toolbar>
+
+<router-outlet></router-outlet>

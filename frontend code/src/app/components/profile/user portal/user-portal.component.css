@@ -1,0 +1,46 @@
+mat-card img {
+  border-radius: 50%;
+  width: 30%;
+  
+  float: left;
+}
+mat-card {
+  height: 100%;
+  margin-top: 5%;
+}
+mat-card-title {
+  width: 60%;
+  padding-top: 10%;
+  padding-left: 3%;
+  text-align: center;
+  font-size: xx-large;
+}
+button{
+  margin-left:10px;
+}
+span,
+span {
+  width: 60%;
+  padding-top: 10%;
+  padding-left: 3%;
+}
+i {
+  margin: 10px;
+  font-size: x-large;
+  color: teal;
+  opacity: 0.7;
+}
+i:hover {
+  opacity: 1;
+  color: teal;
+}
+@media (max-width: 768px) {
+  mat-card-title {
+    font-size: 20px;
+  }
+  mat-card img {
+   
+    width: 100%;
+   
+  }
+}

@@ -1,0 +1,20 @@
+<mat-card>
+  <img [src]="oneUser.image" />
+  <mat-card-title
+    >{{ oneUser.firstname }} {{ oneUser.lastname }}</mat-card-title
+  >
+
+  <span> Email: {{ oneUser.email }}</span> <br />
+  <span> Role: {{ oneUser.role }}</span> <br />
+  <span *ngIf="oneUser.passwordChangedAt">
+    Last password changed at :{{ oneUser.passwordChangedAt | date }}</span
+  > <br />
+  <button
+  mat-raised-button
+  color="accent"
+ 
+  [routerLink]="['/auth/admin']"
+>
+  <- GO BACK
+</button>
+</mat-card>

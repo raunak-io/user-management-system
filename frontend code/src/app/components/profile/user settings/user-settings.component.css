@@ -1,0 +1,9 @@
+mat-card {
+  width: 80%;
+  margin: 0 5%;
+}
+mat-card a {
+  text-decoration: none;
+  margin-left: 2rem;
+  float: center;
+}

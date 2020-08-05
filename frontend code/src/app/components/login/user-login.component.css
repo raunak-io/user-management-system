@@ -1,0 +1,22 @@
+mat-form-field {
+    width: 100%;
+  }
+  mat-card {
+    width: 60%;
+    margin: 10% auto;
+  }
+  mat-spinner {
+    margin: 0 40%;
+  }
+  a {
+    text-decoration: none;
+    color: crimson;
+    margin: 0 15%;
+  }
+  
+  @media (max-width: 768px) {
+    a {
+      margin: 0 4%;
+    }
+  }
+  
